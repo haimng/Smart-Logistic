@@ -1,0 +1,14 @@
+=== Tasks
+
+
+
+
+
+
+
+
+=== MySQL
+CREATE SCHEMA IF NOT EXISTS `smart-logistic` DEFAULT CHARACTER SET utf8;
+
+GRANT ALL PRIVILEGES ON *.* TO 'smart-logistic'@'localhost' IDENTIFIED BY 'TODO';
+GRANT ALL PRIVILEGES ON *.* TO 'smart-logistic'@'%' IDENTIFIED BY 'TODO';
