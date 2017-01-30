@@ -1,0 +1,7 @@
+/var/log/forever/*log {
+  missingok
+  compress
+  delaycompress
+  notifempty
+  copytruncate 
+}

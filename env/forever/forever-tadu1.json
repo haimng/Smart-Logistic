@@ -1,0 +1,10 @@
+[
+  {
+    "uid": "smart-logistic",
+    "append": true,
+    "watch": false,
+    "sourceDir": "/var/www/deploy/smart-logistic",
+    "script": "active/server/server.js",
+    "args": ["--port", "8080"]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "name": "smart-logistic",
+  "description": "Smart Logistic",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rm -rf ./build",
+    "build": "./tools/build.sh",
+    "deploy": "./tools/deploy.sh",
+    "watch": "_ENV=local ./tools/watch.sh",
+    "stop_node": "ps -eo pid,args | awk '$2~/node/ { print $1 }' | xargs kill -9; ps aux | grep node",
+    "start": "cd ./build && _ENV=local node ./server/server.js",
+    "shell": "# _ENV=local shell=search npm run shell -- ping",
+    "shell": "cd ./build && node ./server/shell/${shell}_shell.js"
+  },
+  "dependencies": {
+    "sanitize-html": "1.13.0",
+    "uslug": "1.0.4",
+    "nodemailer": "2.6.0",
+    "sitemap": "1.8.1",
+    "elasticsearch": "11.0.1",
+    "sha1": "1.1.1",
+    "bcrypt-nodejs": "0.0.3",
+    "node-uuid": "1.4.7",
+    "aws-sdk": "2.4.13",
+    "cheerio": "0.20.0",
+    "dateformat": "1.0.12",
+    "classnames": "2.2.5",
+    "lodash": "4.14.2",
+    "accounting": "0.4.1",
+    "react": "0.14.3",
+    "react-dom": "0.14.3",
+    "react-router": "0.13.5",
+    "react-dropzone": "3.5.3",
+    "cookies": "0.6.1",
+    "express": "4.14.0",
+    "body-parser": "1.15.2",
+    "path": "0.12.7",
+    "when": "3.7.7",
+    "fs": "0.0.2",
+    "yargs": "4.8.1",
+    "mysql": "2.11.1"
+  },
+  "devDependencies": {
+    "babelify": "7.3.0",
+    "babel-preset-es2015": "6.13.2",
+    "babel-preset-react": "6.11.1",
+    "envify": "3.4.1"
+  }
+}
