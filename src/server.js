@@ -16,6 +16,8 @@ app.enable('trust proxy');
 // API Request Handler
 //=====================
 app.use(BodyParser.json());
+app.set('json spaces', 2);
+
 app.use('/api', ApiRouter);
 app.use('', (req, res, next) => { res.sendStatus(200); });
 
