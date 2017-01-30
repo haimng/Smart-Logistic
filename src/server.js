@@ -17,6 +17,7 @@ app.enable('trust proxy');
 //=====================
 app.use(BodyParser.json());
 app.use('/api', ApiRouter);
+app.use('', (req, res, next) => { res.sendStatus(200); });
 
 let server = app.listen(ServerEnv.server_port, () => {
   let host = server.address().address;
