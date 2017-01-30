@@ -5,7 +5,7 @@
 
 export const ENV = {
   pro: {
-    server_port: 3306,
+    server_port: 8080,
     db: {
       default: {
         connectionLimit : 10,
