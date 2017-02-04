@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `package` (
   `pa_weight` DOUBLE(16, 2) DEFAULT 0,
   `pa_price` DOUBLE(16,2) NULL,
   `pa_type` INT DEFAULT 0 COMMENT 'Type of good',
-  `pa_cl_id` INT(11) NOT NULL COMMENT 'Client ID, who is sender',
+  `pa_cl_id` INT(11) NOT NULL COMMENT 'Client ID, who is sender',  
   `pa_date_purchase` DATETIME NULL,
   `pa_delivered_shelter` DATETIME NULL,
   `pa_delivered_client` DATETIME NULL,
@@ -133,6 +133,21 @@ CREATE TABLE IF NOT EXISTS `package` (
   PRIMARY KEY (`pa_id`),
   KEY `pa_cl_id` (`pa_cl_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `sending_package` (
+  `se_id` BIGINT NOT NULL AUTO_INCREMENT,
+  `se_code` DOUBLE(16,2) NULL,
+  `se_date` DATETIME NULL,
+  `se_typeofpayment` INT NULL COMMENT '1 = paypal, 2 = cash, 3 = credit card',
+  `se_status` INT NULL COMMENT '0 = new package, 1 = waiting for return, ...',
+  `se_it_id` BIGINT NOT NULL COMMENT 'ID of package',
+  `se_re_id` INT(11) NOT NULL COMMENT 'ID of representative, who is belonged to portal',
+  `se_de_id` INT(11) NULL COMMENT 'ID of deliver man',
+  PRIMARY KEY (`se_id`),
+  KEY `se_it_id` (`se_it_id`),
+  KEY `se_re_id` (`se_re_id`),
+  KEY `se_de_id` (`se_de_id`)
+)ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
