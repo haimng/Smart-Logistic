@@ -6,6 +6,7 @@
 var Router = require('express').Router();
 var UtilApi = require('./util_api');
 var UserApi = require('./user_api');
+var PackageApi = require('./package_api');
 var FeedbackApi = require('./feedback_api');
 var NoticeApi = require('./notice_api');
 var FriendApi = require('./friend_api');
@@ -18,7 +19,7 @@ import SessionModel from '../models/session_model';
 Router.use((req, res, next) => {
   // Log request
   H.logRequest(req);
-  Log.debug('req.params: ',req.params);
+  //Log.debug('req.params: ',req.params);
   Log.debug('req.query: ',req.query);
   Log.debug('req.body: ',req.body);
   
@@ -53,6 +54,7 @@ Router.use((req, res, next) => {
 
 Router.use('/util', UtilApi);
 Router.use('/user', UserApi);
+Router.use('/package', PackageApi);
 Router.use('/feedback', FeedbackApi);
 Router.use('/notice', NoticeApi);
 Router.use('/friend', FriendApi);
