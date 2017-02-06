@@ -18,7 +18,7 @@ The success will response with a `sid` value, set it in the cookie name `_sid` f
 **sample request**
 
 ```
-curl -X POST "http://smartlogistic.info/api/user/signup" \
+curl -X POST "https://smartlogistic.info/api/user/signup" \
 -H "Content-Type: application/json" \
 -d '{
   "email": "a@b.com",
@@ -54,7 +54,7 @@ The success will response with a `sid` value, set it in the cookie name `_sid` f
 **sample request**
 
 ```
-curl -X POST "http://smartlogistic.info/api/user/signin" \
+curl -X POST "https://smartlogistic.info/api/user/signin" \
 -H "Content-Type: application/json" \
 -d '{
   "email": "a@b.com",
@@ -98,7 +98,7 @@ User signout.
 **sample request**
 
 ```
-curl -X POST "http://smartlogistic.info/api/user/signout" \
+curl -X POST "https://smartlogistic.info/api/user/signout" \
 --cookie "_sid=89f92655-17b5-45f4-9bb8-8014b2e6ff5d"
 ```
 
@@ -120,7 +120,7 @@ Get a user profile.
 **sample request**
 
 ```
-curl -X GET "http://smartlogistic.info/api/user/2"
+curl -X GET "https://smartlogistic.info/api/user/1"
 ```
 
 
@@ -158,7 +158,7 @@ Update my profile.
 **sample request**
 
 ```
-curl -X PUT "http://smartlogistic.info/api/user/me" \
+curl -X PUT "https://smartlogistic.info/api/user/me" \
 --cookie "_sid=96c4a9ef-ce14-4d7c-8b59-aee30ff532d7" \
 -H "Content-Type: application/json" \
 -d '{
