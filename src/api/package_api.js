@@ -52,9 +52,8 @@ PackageApi.put('/:id', (req, res) => {
   PackageModel.get(id, (data) => {
     if (!role && data.sid != uid && data.rid != uid)  return H.resUnauthorized(res);
 
-    let data = {}; data[prop] = value;
-    
-    PackageModel.updateById(id, data, (result) => {
+    let params = {}; params[prop] = value;
+    PackageModel.updateById(id, params, (result) => {
       H.resSuccess(res);
     }, () => { 
       H.resFailure(res); 
