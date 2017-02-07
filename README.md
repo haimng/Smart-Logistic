@@ -5,8 +5,9 @@ API services for Smart Logistic.
 ### Documents
 
 API | Description
-----|-----------------------------------------------------
-<a href="docs/api/User.md">User</a> | User signin & signup.
+----|--------------------------------------------------------------------
+<a href="docs/api/User.md">User</a>       | User signin & signup.
+<a href="docs/api/Package.md">Package</a> | Create & track a package.
 
 
 

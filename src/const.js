@@ -2,7 +2,7 @@ export const FACEBOOK = 'facebook';
 export const GOOGLE = 'google';
 
 // User
-export const USER_FIELDS = ['id','first_name','last_name','display_name','avatar','cover','birthdate','sex','city','intro','site','rc','lc','nc','role','updated'];
+export const USER_FIELDS = ['id','role','first_name','last_name','display_name','avatar','birthdate','sex','city','address','phone','intro','website','nc','capacity','status','updated'];
 export const USER_PHOTO_SIZES = {
   normal: [{w:600, h:600}, {w:300, h:300}],
   cover: [{w:1200, h:800}],
