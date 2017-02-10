@@ -232,6 +232,14 @@ export default class Model {
     this.query(sql, success, error);
   }
   
+  deleteAll(success, error) {
+    this.remove({}, success, error);
+  }
+  
+  deleteById(id, success, error) {
+    this.remove({id: id}, success, error);
+  }
+  
   get(id, success, error) {
     this.select({ cond: {id: id}, limit: 1 },
       (result) => { 

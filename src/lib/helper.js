@@ -179,13 +179,6 @@ class Helper {
   get currentDateTime() {
     return this.formatDate(new Date(), "yyyy/m/d h:MM:ss");
   }
-  
-  replaceLineBreak(str) {
-    str = str.replace(/(?:\r\n|\r)/g, '\n');
-    return str.split('\n').map( (text,k) => {
-      return (<span key={k}>{text}<br/></span>)
-    });
-  }
 
   stripHtml(html) {
      if (typeof document !== 'undefined') {

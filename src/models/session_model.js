@@ -28,10 +28,6 @@ class SessionModel extends Model {
       });
   }
   
-  remove(id) {
-    super.remove({ id: id }, (result) => {}, () => {});
-  }
-  
 }
 
 var model = new SessionModel();

@@ -19,6 +19,7 @@ PackageApi.post('', (req, res) => {
   PackageModel.insert({value:value}, (result) => {
     // TODO: Notice
     
+    value.id = result.insertId;
     H.resSuccess(res, value);
   }, () => {
     H.resFailure(res);
