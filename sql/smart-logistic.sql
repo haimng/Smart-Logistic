@@ -49,6 +49,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `role` (`role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `receiver`;
+CREATE TABLE IF NOT EXISTS `receiver` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL COMMENT 'Sender ID',
+  `first_name` varchar(64) DEFAULT NULL,
+  `last_name` varchar(64) DEFAULT NULL,
+  `state` varchar(64) DEFAULT NULL,
+  `city` varchar(64) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `sid` (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `package`;
 CREATE TABLE IF NOT EXISTS `package` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

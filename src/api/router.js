@@ -3,14 +3,15 @@
 //  Copyright © 2017 VNDB Inc. All rights reserved.
 //
 
-var Router = require('express').Router();
-var UtilApi = require('./util_api');
-var UserApi = require('./user_api');
-var PackageApi = require('./package_api');
-var FeedbackApi = require('./feedback_api');
-var NoticeApi = require('./notice_api');
-var FriendApi = require('./friend_api');
-var MessageApi = require('./message_api');
+let Router = require('express').Router();
+let UtilApi = require('./util_api');
+let UserApi = require('./user_api');
+let PackageApi = require('./package_api');
+let ReceiverApi = require('./receiver_api');
+let FeedbackApi = require('./feedback_api');
+let NoticeApi = require('./notice_api');
+let FriendApi = require('./friend_api');
+let MessageApi = require('./message_api');
 
 import H from '../lib/helper';
 import Log from '../lib/log';
@@ -55,6 +56,7 @@ Router.use((req, res, next) => {
 Router.use('/util', UtilApi);
 Router.use('/user', UserApi);
 Router.use('/package', PackageApi);
+Router.use('/receiver', ReceiverApi);
 Router.use('/feedback', FeedbackApi);
 Router.use('/notice', NoticeApi);
 Router.use('/friend', FriendApi);

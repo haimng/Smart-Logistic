@@ -1,10 +1,15 @@
 === Tasks
-- Unit Test
+TODO:
+- Sender tao don hang xong, se chon drop portal cua ho
+- pickup portal se duoc tu dong assign. Giai thuat la chon portal co khoang cach gan nhat so voi dia chi duoc khai bao cua nguoi nhan
+- Sau khi package dc submit, sms, email se duoc gui ve cho sender, receiver, portal
+- receiver khi nhan duoc message se hieu la don hang gui cho minh da duoc tao. 
+  Neu ho muon thay doi vi tri portal de nhan, ho se dung package ID va Secret Code de vao he thong nham thay doi no. 
+  Ho co 4 tieng de thuc hien viec thay doi portal nay, ke tu khi don hang duoc tao
 
 
-
-
-
+=== Keys
+Google API Key: TODO
 
 
 === MySQL
