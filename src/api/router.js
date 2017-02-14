@@ -20,7 +20,8 @@ import SessionModel from '../models/session_model';
 Router.use((req, res, next) => {
   // Log request
   H.logRequest(req);
-  //Log.debug('req.params: ',req.params);
+//  Log.debug('req.headers: ',req.headers);
+  Log.info('req.headers.cookie: ',req.headers.cookie);
   Log.debug('req.query: ',req.query);
   Log.debug('req.body: ',req.body);
   
