@@ -255,16 +255,6 @@ class Helper {
   resUnauthorized(res) { this.resFailure(res, 401); }
   resNotfound(res) { this.resFailure(res, 404); }
   
-  getCookie(name, req) {
-    var cookie = req ? req.headers.cookie : document.cookie;
-    if(!cookie)  return '';
-    
-    var value = "; " + cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2)  return parts.pop().split(";").shift();
-    return '';
-  }
-  
   sessionUser(session) {
     var user = JSON.parse(session.data);
     if(user && user.id) {

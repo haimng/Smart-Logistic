@@ -14,6 +14,7 @@
     "test": "_ENV=local mocha --compilers js:babel-register ./test/test.js"
   },
   "dependencies": {
+    "cookie-parser": "1.4.3",
     "sanitize-html": "1.13.0",
     "uslug": "1.0.4",
     "nodemailer": "2.6.0",

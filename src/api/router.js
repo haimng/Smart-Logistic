@@ -21,7 +21,7 @@ Router.use((req, res, next) => {
   // Log request
   H.logRequest(req);
 //  Log.debug('req.headers: ',req.headers);
-  Log.info('req.headers.cookie: ',req.headers.cookie);
+//  Log.info('req.headers.cookie: ',req.headers.cookie);
   Log.debug('req.query: ',req.query);
   Log.debug('req.body: ',req.body);
   
@@ -38,7 +38,7 @@ Router.use((req, res, next) => {
 //  res.set('Access-Control-Allow-Credentials', 'true');
   
   // Session user
-  req._sid = H.getCookie('_sid', req);
+  req._sid = req.cookies['_sid'];
   if(req._sid) {
     SessionModel.get(req._sid, 
       (session) => {
