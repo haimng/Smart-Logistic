@@ -179,13 +179,6 @@ class Helper {
   get currentDateTime() {
     return this.formatDate(new Date(), "yyyy/m/d h:MM:ss");
   }
-  
-  replaceLineBreak(str) {
-    str = str.replace(/(?:\r\n|\r)/g, '\n');
-    return str.split('\n').map( (text,k) => {
-      return (<span key={k}>{text}<br/></span>)
-    });
-  }
 
   stripHtml(html) {
      if (typeof document !== 'undefined') {
@@ -261,16 +254,6 @@ class Helper {
   resInvalid(res, err) { this.resFailure(res, 400, err); }
   resUnauthorized(res) { this.resFailure(res, 401); }
   resNotfound(res) { this.resFailure(res, 404); }
-  
-  getCookie(name, req) {
-    var cookie = req ? req.headers.cookie : document.cookie;
-    if(!cookie)  return '';
-    
-    var value = "; " + cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2)  return parts.pop().split(";").shift();
-    return '';
-  }
   
   sessionUser(session) {
     var user = JSON.parse(session.data);

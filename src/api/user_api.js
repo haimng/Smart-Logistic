@@ -23,7 +23,7 @@ function addSession(user, req, res) {
   var sid = Uuid.v4();
   SessionModel.add(sid, user,
     (result) => {
-      if(req._sid)  SessionModel.remove(req._sid);
+      if(req._sid)  SessionModel.deleteById(req._sid);
       
       res.cookie('_sid', sid, {path: '/', maxAge: 31536000000}); // session expires in 1 year
       user.sid = sid;
@@ -46,7 +46,7 @@ function updateSession(sid, user, res) {
 }
 
 function removeSession(req, res) {
-  SessionModel.remove(req._sid);
+  SessionModel.deleteById(req._sid);
   
   res.clearCookie('_sid');
   H.resSuccess(res);

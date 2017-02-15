@@ -19,6 +19,7 @@ PackageApi.post('', (req, res) => {
   PackageModel.insert({value:value}, (result) => {
     // TODO: Notice
     
+    value.id = result.insertId;
     H.resSuccess(res, value);
   }, () => {
     H.resFailure(res);
@@ -29,12 +30,9 @@ PackageApi.get('/:id', (req, res) => {
   if(!req._user)  return H.resUnauthorized(res);
   
   let uid = req._user.id;
-  let role = req._user.role;
   let {id} = req.params;
   
   PackageModel.get(id, (data) => {
-    if (!role && data.sid != uid && data.rid != uid)  return H.resUnauthorized(res);
-    
     H.resSuccess(res, data);
   }, () => {
     H.resFailure(res);

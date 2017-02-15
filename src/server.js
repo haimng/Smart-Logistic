@@ -4,6 +4,7 @@
 //
 
 var Express = require('express');
+var CookieParser = require('cookie-parser')
 var BodyParser = require('body-parser');
 var ApiRouter = require('./api/api_router');
 
@@ -11,6 +12,7 @@ import ServerEnv from './server_env';
 
 let app = Express();
 app.enable('trust proxy');
+app.use(CookieParser());
 
 //=====================
 // API Request Handler

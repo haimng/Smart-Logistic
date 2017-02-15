@@ -3,14 +3,15 @@
 //  Copyright © 2017 VNDB Inc. All rights reserved.
 //
 
-var Router = require('express').Router();
-var UtilApi = require('./util_api');
-var UserApi = require('./user_api');
-var PackageApi = require('./package_api');
-var FeedbackApi = require('./feedback_api');
-var NoticeApi = require('./notice_api');
-var FriendApi = require('./friend_api');
-var MessageApi = require('./message_api');
+let Router = require('express').Router();
+let UtilApi = require('./util_api');
+let UserApi = require('./user_api');
+let PackageApi = require('./package_api');
+let ReceiverApi = require('./receiver_api');
+let FeedbackApi = require('./feedback_api');
+let NoticeApi = require('./notice_api');
+let FriendApi = require('./friend_api');
+let MessageApi = require('./message_api');
 
 import H from '../lib/helper';
 import Log from '../lib/log';
@@ -19,7 +20,8 @@ import SessionModel from '../models/session_model';
 Router.use((req, res, next) => {
   // Log request
   H.logRequest(req);
-  //Log.debug('req.params: ',req.params);
+//  Log.debug('req.headers: ',req.headers);
+//  Log.info('req.headers.cookie: ',req.headers.cookie);
   Log.debug('req.query: ',req.query);
   Log.debug('req.body: ',req.body);
   
@@ -36,7 +38,7 @@ Router.use((req, res, next) => {
 //  res.set('Access-Control-Allow-Credentials', 'true');
   
   // Session user
-  req._sid = H.getCookie('_sid', req);
+  req._sid = req.cookies['_sid'];
   if(req._sid) {
     SessionModel.get(req._sid, 
       (session) => {
@@ -55,6 +57,7 @@ Router.use((req, res, next) => {
 Router.use('/util', UtilApi);
 Router.use('/user', UserApi);
 Router.use('/package', PackageApi);
+Router.use('/receiver', ReceiverApi);
 Router.use('/feedback', FeedbackApi);
 Router.use('/notice', NoticeApi);
 Router.use('/friend', FriendApi);
