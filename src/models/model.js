@@ -18,7 +18,7 @@ let _pool = {};
 export default class Model {
   constructor() {
     this._db = 'default';
-    this._table = this.constructor.name.slice(0,-5).toLowerCase();
+    this._table = this.constructor.name.slice(0,-5).toUnderscore().toLowerCase();
   }
   
   get pool() {
@@ -286,13 +286,18 @@ export default class Model {
       });
   }
 
-  getTarget(data, target, id_name, fields, callback) {
-    let ids = data.map((d) => { return d[id_name]; });
+  getTarget(data, opt, callback) {
+    let {target, id_name, map_name, fields} = opt;
+    fields = fields || '*';
+    map_name = map_name || target;
+    
+    let ids = data.map((d) => { return d[id_name]; }).filter((d) => { return d; });
+    
     let TargetModel = require(`../models/${target}_model`)[`${H.cap(target)}Model`];
     let targetModel = new TargetModel();
     targetModel.select({cond:{'id_in':ids}, fields:fields}, (items) => {
       items = _.keyBy(items,'id');
-      data.map((d) => { let i = items[d[id_name]]; if(i)  d[target] = i; });
+      data.map((d) => { let i = items[d[id_name]]; if(i)  d[map_name] = i; });
       callback();
     }, () => {
       callback();

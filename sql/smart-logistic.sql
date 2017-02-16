@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `avatar` varchar(512) DEFAULT NULL,
   `birthdate` varchar(32) DEFAULT NULL,
   `sex` tinyint(4) DEFAULT 0 COMMENT '0:none, 1:female, 2:male',
+  `state` varchar(64) DEFAULT NULL,
   `city` varchar(64) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
@@ -78,11 +79,27 @@ CREATE TABLE IF NOT EXISTS `package` (
   `price` int(11) DEFAULT 0 COMMENT 'VND',
   `size` tinyint(4) DEFAULT 1 COMMENT 'TODO: detail sizes are defined in another table',
   `weight` int(11) DEFAULT 0 COMMENT 'grams',
-  `status` tinyint(4) DEFAULT 0 COMMENT 'TODO: design state machine',
+  `status` VARCHAR(32) DEFAULT 'new' COMMENT 'new|src_portal|delivering|dest_portal|delivered',
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `sid` (`sid`),
-  KEY `rid` (`rid`)
+  KEY `rid` (`rid`),
+  KEY `status` (`status`)
+) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `package_history`;
+CREATE TABLE IF NOT EXISTS `package_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL COMMENT 'Package ID',
+  `uid` int(11) NOT NULL COMMENT 'Edited UID',
+  `portal_id` int(11) COMMENT 'Portal ID = user.id',
+  `status` VARCHAR(32) DEFAULT 'new' COMMENT 'new|src_portal|delivering|dest_portal|delivered',
+  `note` text,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `uid` (`uid`),
+  KEY `status` (`status`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `feedback` (

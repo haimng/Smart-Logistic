@@ -1,6 +1,6 @@
 import Model from './model';
 
-class ReceiverModel extends Model {
+export class ReceiverModel extends Model {
   
 }
 

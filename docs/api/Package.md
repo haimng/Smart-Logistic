@@ -5,6 +5,8 @@ Name     | Endpoint
 Create   | [POST /api/package](#post_package)
 Track    | [GET /api/package/:id](#get_package)
 Update   | [PUT /api/package/:id](#put_package)
+Update status   | [PUT /api/package/:id/status](#put_package_status)
+Package histories   | [GET /api/package/:id/history](#get_package_history)
 
 
 
@@ -88,7 +90,7 @@ curl -X GET "https://smartlogistic.info/api/package/1" \
 ```
 
 
-### <a name="put_package">PUT /api/package/1</a>
+### <a name="put_package">PUT /api/package/:id</a>
 
 Update a package. If `role` is user, only `sender` & `receiver` of this package can edit it.
 
@@ -111,6 +113,130 @@ curl -X PUT "https://smartlogistic.info/api/package/1" \
 {
   "status": "SUCCESS",
   "data": ""
+}
+```
+
+
+### <a name="put_package_status">PUT /api/package/:id/status</a>
+
+Update a package's status.
+
+- `new`: New package 
+- `src_portal`: Dropped at source portal
+- `delivering`: Delivering
+- `dest_portal`: Dropped at destination portal
+- `delivered`: Delivered
+
+**sample request**
+
+```
+curl -X PUT "https://smartlogistic.info/api/package/1/status" \
+--cookie "_sid=59f313af-5e8e-4628-ba92-cbfe19d4803b" \
+-H "Content-Type: application/json" \
+-d '{
+  "status": "src_portal",
+  "portal_id": 2,
+  "note": "Dropped at source portal"
+}'
+```
+
+
+**sample response**
+
+```
+{
+  "status": "SUCCESS",
+  "data": ""
+}
+```
+
+
+### <a name="get_package_history">GET /api/package/:id/history</a>
+
+Get a package's histories.
+
+**sample request**
+
+```
+curl -X GET "https://smartlogistic.info/api/package/1/history" \
+```
+
+
+**sample response**
+
+```
+{
+  "status": "SUCCESS",
+  "data": [ 
+   { 
+    id: 66,
+    pid: 41,
+    uid: 41,
+    portal_id: null,
+    status: 'new',
+    note: null,
+    updated: '2017-02-16T02:53:53.000Z',
+    package: { 
+       id: 41,
+       sid: 41,
+       rid: 2,
+       code: '50906194-7c58-4901-996b-98bbb939a9fe',
+       priority: 0,
+       type: 0,
+       title: 'Title2',
+       description: 'Description',
+       price: 100000,
+       size: 1,
+       weight: 500,
+       status: 'src_portal',
+       updated: '2017-02-16T02:53:53.000Z' 
+     } 
+   },
+   { 
+    id: 67,
+    pid: 41,
+    uid: 41,
+    portal_id: 41,
+    status: 'src_portal',
+    note: 'Dropped at source portal',
+    updated: '2017-02-16T02:53:53.000Z',
+    package: { 
+       id: 41,
+       sid: 41,
+       rid: 2,
+       code: '50906194-7c58-4901-996b-98bbb939a9fe',
+       priority: 0,
+       type: 0,
+       title: 'Title2',
+       description: 'Description',
+       price: 100000,
+       size: 1,
+       weight: 500,
+       status: 'src_portal',
+       updated: '2017-02-16T02:53:53.000Z' 
+    },
+    portal: { 
+       id: 41,
+       role: '',
+       first_name: 'A',
+       last_name: 'B',
+       display_name: 'A B 2',
+       avatar: null,
+       birthdate: null,
+       sex: 0,
+       state: null,
+       city: null,
+       address: null,
+       phone: null,
+       intro: null,
+       website: null,
+       nc: 0,
+       capacity: 50,
+       status: 0,
+       updated: '2017-02-16T02:53:52.000Z' 
+    } 
+  } 
+ ]      
 }
 ```
 

@@ -5,7 +5,7 @@ import UserModel from './user_model';
 import H from '../lib/helper';
 import Pool from '../lib/pool';
 
-class NoticeModel extends Model {
+export class NoticeModel extends Model {
  
   add(cond, notice, success, error) {
     super.add(cond, notice, () => {
@@ -27,7 +27,7 @@ class NoticeModel extends Model {
       
       var pool = new Pool();
       pool.push((callback) => {
-        this.getTarget(data, 'user', 'fid', 'id,display_name,avatar', callback);
+        super.getTarget(data, {target:'user', id_name:'fid', fields:'id,display_name,avatar'}, callback);
       });
       pool.run((result) => {
         success(data);

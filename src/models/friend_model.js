@@ -4,7 +4,7 @@ import H from '../lib/helper';
 import Pool from '../lib/pool';
 import Model from './model';
 
-class FriendModel extends Model {
+export class FriendModel extends Model {
   
   add(cond, friend, success, error) {
     super.add(cond, friend, success, error);
@@ -19,7 +19,7 @@ class FriendModel extends Model {
       
       var pool = new Pool();
       pool.push((callback) => {
-        this.getTarget(data, 'user', 'fid', 'id,display_name,avatar', callback);
+        super.getTarget(data, {target:'user', id_name:'fid', fields:'id,display_name,avatar'}, callback);
       });
       pool.run((result) => {
         data = data.map((f) => { return f.user; });

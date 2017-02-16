@@ -27,6 +27,10 @@ String.prototype.hasPrefix = function(s) {
   return this.indexOf(s) === 0;
 };
 
+String.prototype.toUnderscore = function(){
+  return this.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();}).replace(/^_/, "");
+};
+
 class Helper {
   
   parseQuery(q) {

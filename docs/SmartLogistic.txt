@@ -8,6 +8,11 @@ TODO:
   Ho co 4 tieng de thuc hien viec thay doi portal nay, ke tu khi don hang duoc tao
 
 
+=== Specs
+Package status:
+	new|src_portal|delivering|dest_portal|delivered
+		
+
 === Keys
 Google API Key: TODO
 

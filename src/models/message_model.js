@@ -1,6 +1,6 @@
 import Model from './model';
 
-class MessageModel extends Model {
+export class MessageModel extends Model {
   
 }
 

@@ -1,6 +1,6 @@
 import Model from './model';
 
-class PackageModel extends Model {
+export class PackageModel extends Model {
   
 }
 

@@ -1,6 +1,6 @@
 import Model from './model';
 
-class FeedbackModel extends Model {
+export class FeedbackModel extends Model {
   
 }
 
